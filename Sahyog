@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>सहयोग पोर्टल प्रतिवेदन | जिला शिक्षा पदाधिकारी, दरभंगा</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+@page{
+    size:A4 portrait;
+    margin:0;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    background:#e5e7eb;
+    font-family:"Noto Sans Devanagari","Mangal","Arial Unicode MS",sans-serif;
+    color:#111;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    padding:18px 0;
+}
+
+.a4{
+    width:210mm;
+    min-height:297mm;
+    background:#fff;
+    padding:14mm 13mm 12mm 13mm;
+    box-shadow:0 2px 12px rgba(0,0,0,.15);
+    font-size:13px;
+    line-height:1.55;
+}
+
+/* Header */
+.header{
+    text-align:center;
+    font-weight:700;
+    line-height:1.45;
+    margin-bottom:7px;
+}
+
+.header .office{
+    font-size:15px;
+}
+
+.header .letter{
+    font-size:14px;
+    margin-top:2px;
+}
+
+/* Rows */
+.row{
+    display:flex;
+    align-items:flex-start;
+    width:100%;
+}
+
+.left{
+    flex:1;
+}
+
+.right{
+    flex:1;
+    text-align:right;
+}
+
+/* Sender / Receiver */
+.sender{
+    margin-top:3px;
+    margin-bottom:8px;
+}
+
+.receiver{
+    margin-top:3px;
+    margin-bottom:8px;
+}
+
+/* Subject */
+.subject{
+    margin-top:2px;
+    margin-bottom:7px;
+}
+
+.subject strong{
+    white-space:nowrap;
+}
+
+/* Paragraph */
+.para{
+    text-align:justify;
+    margin:4px 0 7px 0;
+}
+
+/* Fillable fields */
+.field{
+    border:0;
+    border-bottom:1px dotted #333;
+    background:transparent;
+    outline:none;
+    font:inherit;
+    color:#111;
+    padding:0 2px;
+    min-width:70px;
+}
+
+.field:focus{
+    background:#fffde7;
+}
+
+.medium{
+    width:180px;
+}
+
+.small{
+    width:85px;
+}
+
+.xsmall{
+    width:55px;
+}
+
+.inline{
+    display:inline-block;
+    vertical-align:baseline;
+}
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+    margin-top:3px;
+    font-size:12px;
+}
+
+th,
+td{
+    border:1px solid #111;
+    padding:4px 5px;
+    vertical-align:top;
+}
+
+th{
+    text-align:center;
+    font-weight:700;
+    height:30px;
+}
+
+td{
+    min-height:43px;
+}
+
+.col1{
+    width:12%;
+}
+
+.col2{
+    width:23%;
+}
+
+.col3{
+    width:25%;
+}
+
+.col4{
+    width:40%;
+}
+
+/* Table fields */
+.cell-input,
+.cell-textarea{
+    width:100%;
+    border:0;
+    outline:0;
+    resize:none;
+    background:transparent;
+    font:inherit;
+    color:#111;
+}
+
+.cell-input{
+    height:23px;
+}
+
+.cell-textarea{
+    min-height:52px;
+}
+
+/* Signature */
+.confidence{
+    text-align:right;
+    margin-top:17px;
+    margin-right:20px;
+    line-height:1.45;
+}
+
+.signatures{
+    display:flex;
+    justify-content:space-between;
+    margin-top:32px;
+    text-align:center;
+}
+
+.signature{
+    width:42%;
+    line-height:1.45;
+}
+
+.memo{
+    margin-top:34px;
+    line-height:1.6;
+}
+
+.copy{
+    margin-top:7px;
+    text-align:left;
+}
+
+.bottom-sign{
+    text-align:right;
+    margin-top:34px;
+    margin-right:16px;
+    line-height:1.45;
+}
+
+/* Buttons */
+.controls{
+    position:fixed;
+    top:12px;
+    right:12px;
+    z-index:10;
+    display:flex;
+    gap:8px;
+}
+
+button{
+    border:0;
+    border-radius:7px;
+    padding:9px 14px;
+    cursor:pointer;
+    color:#fff;
+    background:#2563eb;
+    font-size:14px;
+}
+
+button.secondary{
+    background:#374151;
+}
+
+/* =========================
+   PRINT SETTINGS
+   ========================= */
+@media print{
+
+    body{
+        background:#fff;
+        padding:0;
+    }
+
+    .a4{
+        width:210mm;
+        min-height:297mm;
+        padding:14mm 13mm 12mm 13mm;
+        box-shadow:none;
+        font-size:13px;
+    }
+
+    .controls{
+        display:none !important;
+    }
+
+    /*
+       IMPORTANT:
+       Print में किसी भी input/textarea
+       की underline दिखाई नहीं देगी.
+    */
+    .field,
+    .cell-input,
+    .cell-textarea{
+        border:none !important;
+        border-bottom:none !important;
+        box-shadow:none !important;
+        background:transparent !important;
+        outline:none !important;
+    }
+
+    input::placeholder,
+    textarea::placeholder{
+        color:transparent !important;
+    }
+
+    table,
+    th,
+    td{
+        border-color:#111 !important;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width:800px){
+
+    body{
+        padding:0;
+    }
+
+    .a4{
+        width:100%;
+        min-height:auto;
+        padding:20px;
+        box-shadow:none;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- Buttons -->
+<div class="controls">
+
+    <button onclick="window.print()">
+        🖨️ Print / Save PDF
+    </button>
+
+    <button
+        class="secondary"
+        onclick="
+        document.querySelectorAll('input,textarea').forEach(e=>{
+            if(!e.readOnly && e.dataset.default !== 'true'){
+                e.value='';
+            }
+        })">
+        Clear
+    </button>
+
+</div>
+
+
+<!-- =========================
+     A4 DOCUMENT
+     ========================= -->
+
+<main class="a4">
+
+    <!-- HEADER -->
+    <div class="header">
+
+        <div class="office">
+            कार्यालय, जिला शिक्षा पदाधिकारी, दरभंगा
+        </div>
+
+        <div class="letter">
+            पत्रांक
+            <input
+                class="field small"
+                aria-label="पत्रांक"
+            >/
+        </div>
+
+    </div>
+
+
+    <!-- SENDER -->
+    <div class="sender">
+
+        <b>प्रेषक,</b>
+
+        <br>
+
+        <span style="display:inline-block;margin-left:55px;">
+            जिला शिक्षा पदाधिकारी,<br>
+            दरभंगा।
+        </span>
+
+    </div>
+
+
+    <!-- RECEIVER -->
+    <div class="receiver">
+
+        <b>सेवा में,</b>
+
+        <br>
+
+        <span style="display:inline-block;margin-left:55px;">
+            जिला कार्यक्रम पदाधिकारी,<br>
+            दरभंगा।
+        </span>
+
+    </div>
+
+
+    <!-- SUBJECT + DATE -->
+    <div class="row" style="margin-top:2px;">
+
+        <div class="left">
+
+            <b>विषय:</b>
+            “सहयोग पोर्टल” पर प्राप्त आवेदन पत्र के सम्बन्ध में।
+
+        </div>
+
+        <div class="right">
+
+            दरभंगा, दिनांक
+
+            <input
+                class="field xsmall"
+                aria-label="दिन"
+            >
+
+            <input
+                class="field xsmall"
+                aria-label="माह"
+            >
+
+            <input
+                class="field xsmall"
+                aria-label="वर्ष"
+                value="2026"
+            >
+
+            ई०
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN PARAGRAPH -->
+    <div class="para">
+
+        <b>महाशय,</b>
+
+        <br>
+
+        उपर्युक्त विषयक “सहयोग पोर्टल” पर
+
+        <input
+            class="field medium inline"
+            aria-label="आवेदक का नाम"
+        >
+
+        द्वारा समर्पित आवेदन में वर्णित बिन्दुओं के सन्दर्भ में
+        वांछित प्रतिवेदन निम्नवत समर्पित की जा रही है।
+
+    </div>
+
+
+    <!-- TABLE -->
+    <table>
+
+        <colgroup>
+
+            <col class="col1">
+            <col class="col2">
+            <col class="col3">
+            <col class="col4">
+
+        </colgroup>
+
+        <thead>
+
+            <tr>
+
+                <th>
+                    क्रम संख्या
+                </th>
+
+                <th>
+                    आवेदन<br>
+                    संख्या/दिनांक
+                </th>
+
+                <th>
+                    शिकायत का विवरण
+                </th>
+
+                <th>
+                    प्रतिवेदन
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            <tr>
+
+                <!-- Serial -->
+                <td style="text-align:center;">
+
+                    <input
+                        class="cell-input"
+                        value="01"
+                        aria-label="क्रम संख्या"
+                    >
+
+                </td>
+
+
+                <!-- Application -->
+                <td>
+
+                    <input
+                        class="cell-input"
+                        placeholder="REF................"
+                        aria-label="आवेदन संख्या"
+                    >
+
+                    <input
+                        class="cell-input"
+                        placeholder="दिनांक"
+                        value="17/09/2026"
+                        aria-label="आवेदन दिनांक"
+                    >
+
+                </td>
+
+
+                <!-- Complaint -->
+                <td>
+
+                    <textarea
+                        class="cell-textarea"
+                        aria-label="शिकायत का विवरण">
+                    </textarea>
+
+                </td>
+
+
+                <!-- Report -->
+                <td>
+
+                    <textarea
+                        class="cell-textarea"
+                        aria-label="प्रतिवेदन">
+                    </textarea>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+
+    <!-- CONFIDENCE -->
+    <div class="confidence">
+
+        विश्वासभाजन
+
+    </div>
+
+
+    <!-- SIGNATURES -->
+    <div class="signatures">
+
+        <div class="signature">
+
+            <br>
+
+            जिला कार्यक्रम पदाधिकारी,<br>
+            स्थापना, दरभंगा
+
+        </div>
+
+
+        <div class="signature">
+
+            <br>
+
+            जिला शिक्षा पदाधिकारी,<br>
+            दरभंगा।
+
+        </div>
+
+    </div>
+
+
+    <!-- MEMO -->
+    <div class="memo">
+
+        <div>
+
+            ज्ञापांक
+
+            <input
+                class="field small"
+                aria-label="ज्ञापांक"
+            >
+
+            , दरभंगा, दिनांक:-
+
+            <input
+                class="field xsmall"
+                aria-label="प्रतिलिपि दिन"
+            >
+
+            /
+
+            <input
+                class="field xsmall"
+                aria-label="प्रतिलिपि माह"
+            >
+
+            /
+
+            <input
+                class="field xsmall"
+                value="2026"
+                aria-label="प्रतिलिपि वर्ष"
+            >
+
+            ई०
+
+        </div>
+
+
+        <div class="copy">
+
+            <b>प्रतिलिपि,</b>
+
+            <input
+                class="field medium"
+                aria-label="प्रतिलिपि प्राप्तकर्ता"
+            >
+
+            , प्रखंड -
+
+            <input
+                class="field small"
+                aria-label="प्रखंड"
+            >
+
+            , जिला -
+
+            <input
+                class="field small"
+                aria-label="जिला"
+            >
+
+            को सूचनार्थ प्रेषित।
+
+        </div>
+
+    </div>
+
+
+    <!-- FINAL SIGNATURE -->
+    <div class="bottom-sign">
+
+        <br>
+
+        जिला शिक्षा पदाधिकारी,<br>
+        दरभंगा।
+
+    </div>
+
+</main>
+
+
+<script>
+
+/*
+   Print function
+*/
+function printDocument(){
+
+    window.print();
+
+}
+
+/*
+   Prevent accidental form submission
+*/
+document.addEventListener("keydown", function(e){
+
+    if(e.ctrlKey && e.key === "p"){
+
+        e.preventDefault();
+
+        window.print();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
